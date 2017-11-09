@@ -1,0 +1,63 @@
+<div class="row">
+	<div class="col-xs-12">
+		<div class="slide-gallery">
+			<span class="left-button">left</span>
+			<img src="https://cdn.prezzybox.com/Images/51035.jpg" class="img-responsive active-slide"/>
+			<img src="https://cdn.prezzybox.com/Images/51036.jpg" class="img-responsive"/>
+			<img src="https://cdn.prezzybox.com/Images/51037.jpg" class="img-responsive"/>
+			<img src="https://cdn.prezzybox.com/Images/51038.jpg" class="img-responsive"/>
+			<img src="https://cdn.prezzybox.com/Images/51039.jpg" class="img-responsive"/>
+			<img src="https://cdn.prezzybox.com/Images/51040.jpg" class="img-responsive"/>
+			<img src="https://cdn.prezzybox.com/Images/51041.jpg" class="img-responsive"/>
+			<img src="https://cdn.prezzybox.com/Images/51042.jpg" class="img-responsive"/>
+			<img src="https://cdn.prezzybox.com/Images/51043.jpg" class="img-responsive"/>
+			<img src="https://cdn.prezzybox.com/Images/51044.jpg" class="img-responsive" />
+			<img src="https://cdn.prezzybox.com/Images/51045.jpg" class="img-responsive"/>
+			<img src="https://cdn.prezzybox.com/Images/51046.jpg" class="img-responsive"/>
+			<img src="https://cdn.prezzybox.com/Images/51047.jpg" class="img-responsive"/>
+			<img src="https://cdn.prezzybox.com/Images/51048.jpg" class="img-responsive"/>
+			<span class="right-button">right</span>
+		</div>
+	</div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+	$(document).ready(function(){ 
+		
+		var gallery = { 
+
+			init : function(){
+				this.slides.hide();
+				this.activeSlide.show();
+			},
+
+			container : $('.slide-gallery'),
+
+			slides : $('.slide-gallery img'),
+
+			activeSlide : $('.slide-gallery img.active-slide'),
+
+			navigation : { 
+				rightButton : $('.right-button'),
+				leftButton : $('.left-button'),
+				forward : function(){ 
+					gallery.activeSlide.removeClass('active-slide');					
+				},
+				backward : function(){ 
+					console.log('back');
+				}
+			}
+		}
+
+		
+		gallery.init();
+	
+		gallery.navigation.rightButton.click(function(){ 
+			gallery.navigation.forward();
+		})
+		gallery.navigation.leftButton.click(function(){ 
+			gallery.navigation.backward();
+		})
+		
+	});
+</script>
