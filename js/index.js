@@ -3,8 +3,9 @@ $(document).ready(function(){
 		var gallery = { 
 
 			init : function(){
+				console.log('current counter' + gallery.counter)
 				this.slides.hide();
-				this.activeSlide.show();
+				this.slides.eq(0).show();
 			},
 
 			container : $('.slide-gallery'),
@@ -13,18 +14,45 @@ $(document).ready(function(){
 
 			activeSlide : $('.slide-gallery img.active-slide'),
 
+			enablebuttonnav : true,
+
+			counter : 0,
+
 			navigation : { 
+
 				rightButton : $('.right-button'),
 				leftButton : $('.left-button'),
+
 				forward : function(){ 
-					gallery.activeSlide.removeClass('active-slide');					
+					if(!gallery.counter + 1 === gallery.slides.length -1);
+					{ 
+						gallery.setActiveSlide(gallery.counter++);
+					}					
 				},
 				backward : function(){ 
-					console.log('back');
+					if(!gallery.counter == 0){
+						gallery.setActiveSlide(gallery.counter--)
+					} 
+					else { 
+						return;
+					}
 				}
+			},
+
+			setActiveSlide : function(e){ 
+				gallery.slides.hide();
+				gallery.slides.eq(gallery.counter).show();
 			}
 		}
 
+		$(document).keydown(function(e){
+			if(e.keyCode == 37) { 
+				gallery.navigation.backward();
+			}
+			else if(e.keyCode == 39) { 
+				gallery.navigation.forward();
+			}
+		});
 		
 		gallery.init();
 	
